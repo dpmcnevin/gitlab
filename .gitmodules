@@ -1,0 +1,3 @@
+[submodule "gitlab"]
+	path = gitlab
+	url = https://github.com/gitlabhq/gitlabhq.git
