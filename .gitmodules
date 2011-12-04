@@ -1,3 +1,6 @@
 [submodule "gitlab"]
 	path = gitlab
 	url = https://github.com/gitlabhq/gitlabhq.git
+[submodule "chef/cookbooks/rvm"]
+	path = chef/cookbooks/rvm
+	url = https://github.com/fnichol/chef-rvm.git
