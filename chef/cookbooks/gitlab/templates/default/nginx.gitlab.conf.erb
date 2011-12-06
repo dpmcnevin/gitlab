@@ -1,0 +1,18 @@
+  upstream gitlab-web {
+    <% (@base_port..(@base_port + (@server_count - 1))).each do |port| %>
+      server 127.0.0.1:<%= port %>;
+    <% end %>
+  }
+
+  ## HTTP Server
+  server {
+    server_name         <%= @hostname %>;
+    listen          80;
+
+    location / {
+      proxy_pass      http://gitlab-web;
+      proxy_buffering off;
+      proxy_buffer_size 16k;
+      proxy_buffers   8 16k;
+    }
+  }

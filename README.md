@@ -33,7 +33,7 @@ On your local machine, update /etc/hosts and add:
 
 Connect to the site
 
-    http://gitlab.local:3000
+    http://gitlab.local
 
 Login with:
 
