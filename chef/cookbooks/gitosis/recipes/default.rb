@@ -1,5 +1,3 @@
-depends "rvm"
-
 rvm_gem "thin"
 
 package "gitosis"
