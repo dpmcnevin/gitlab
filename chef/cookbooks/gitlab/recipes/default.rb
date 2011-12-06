@@ -20,3 +20,8 @@ template "#{node[:gitlab][:path]}/config/gitlab.yml" do
   action :create
   owner node[:gitlab][:user]
 end
+
+bash "update /etc/hosts" do
+  code "echo 127.0.0.1 #{node[:gitlab][:hostname]} >> /etc/hosts"
+  not_if "grep #{node[:gitlab][:hostname]} /etc/hosts"
+end

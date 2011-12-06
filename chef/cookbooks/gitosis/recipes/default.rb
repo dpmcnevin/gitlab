@@ -27,7 +27,7 @@ directory "/home/git/.ssh" do
   action :create
 end
 
-execute "generate ssh skys for #{node[:gitlab][:user]}." do
+execute "generate ssh keys for #{node[:gitlab][:user]}." do
   user node[:gitlab][:user]
   creates "/home/#{node[:gitlab][:user]}/.ssh/id_rsa.pub"
   command "ssh-keygen -t rsa -q -f /home/#{node[:gitlab][:user]}/.ssh/id_rsa -P \"\""
@@ -38,6 +38,10 @@ template "/home/#{node[:gitlab][:user]}/.ssh/config" do
   owner node[:gitlab][:user]
   group node[:gitlab][:user]
   mode "0600"
+  variables(
+    :hostname => node[:gitlab][:hostname]
+  )
+  action :create
 end
 
 bash "install gitosis" do
