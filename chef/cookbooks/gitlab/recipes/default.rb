@@ -11,3 +11,12 @@ rvm_shell "set up database" do
   code %{RAILS_ENV=production rake db:setup; RAILS_ENV=production rake db:seed_fu}
   creates "#{node[:gitlab][:path]}/db/production.sqlite3"
 end
+
+template "#{node[:gitlab][:path]}/config/gitlab.yml" do
+  source "gitlab.yml.erb"
+  variables(
+    :host => node[:gitlab][:hostname]
+  )
+  action :create
+  owner node[:gitlab][:user]
+end
