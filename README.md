@@ -12,7 +12,7 @@ Clone repository
     git clone git://github.com/dpmcnevin/gitlab.git
 
 Init and update the submodules
-
+    cd gitlab
     git submodule init
     git submodule update
 
